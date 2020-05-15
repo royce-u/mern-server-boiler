@@ -7,10 +7,10 @@ let jwt = require('jsonwebtoken')
 router.post('/login', (req, res) => {
   console.log(req.body)
   //look up user by their email
-  dbUser.findOne({ email: req.body.email })
+  db.User.findOne({ email: req.body.email })
   .then(user => {
     //check whether the user exists
-    if (user){
+    if (!user){
       //they don't have an account.  Send error message
       return res.status(404).send({ message: 'user not found' })
     }
