@@ -13,8 +13,10 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false })) // Accept form data
 app.use(express.json()) // Accept data from fetch (or any AJAX call)
 
+
 // Routes
 app.use('/auth', require('./controllers/auth'))
+app.use('/profile', require('./controllers/profile'))
 
 app.get('*', (req, res) => {
   res.status(404).send({ message: 'Not Found' })
